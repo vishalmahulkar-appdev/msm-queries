@@ -12,13 +12,5 @@
 #
 
 class Actor < ApplicationRecord
-  def characters
-    return Character.where({ :actor_id => self.id })
-  end
 
-  def filmography
-    array_of_movie_ids = characters.pluck(:movie_id)
-
-    return Movie.where({ :id => array_of_movie_ids })
-  end
 end

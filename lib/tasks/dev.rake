@@ -1098,6 +1098,10 @@ namespace(:dev) do
       {id: 319, name: "Officer Davis", movie_id: 22, actor_id: 282, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
       {id: 320, name: "Gluttony Victim", movie_id: 22, actor_id: 283, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
       {id: 321, name: "Dr. O'Neill", movie_id: 22, actor_id: 284, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
+  ]
+  Character.insert_all!(character_values)
+
+  character_values = [
       {id: 322, name: "Coroner (as Reginald E. Cathey)", movie_id: 22, actor_id: 285, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
       {id: 323, name: "Workman", movie_id: 22, actor_id: 286, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
       {id: 324, name: "Cab Driver", movie_id: 22, actor_id: 287, created_at: "2015-08-12 17:20:10", updated_at: "2015-08-12 17:20:10"},
@@ -1364,6 +1368,10 @@ namespace(:dev) do
       {id: 585, name: "Aogaeru, Assistant Manager (voice)", movie_id: 41, actor_id: 526, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},
       {id: 586, name: "Kawa no Kami (voice)", movie_id: 41, actor_id: 527, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},
       {id: 587, name: "Chihiro / Sen (voice)", movie_id: 41, actor_id: 528, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},
+    ]
+    Character.insert_all!(character_values)
+    
+    character_values = [
       {id: 588, name: "A Factory Worker (as Charlie Chaplin)", movie_id: 42, actor_id: 492, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},
       {id: 589, name: "A Gamin", movie_id: 42, actor_id: 529, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},
       {id: 590, name: "Cafe Proprietor", movie_id: 42, actor_id: 530, created_at: "2015-08-12 17:20:11", updated_at: "2015-08-12 17:20:11"},

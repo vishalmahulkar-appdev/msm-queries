@@ -9,6 +9,10 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  Rails.application.configure do
+    config.hosts.clear
+  end  
+
   path = Rails.root.join("whitelist.yml")
   default_whitelist_path = Rails.root.join("default_whitelist.yml")
   whitelisted_ips = []

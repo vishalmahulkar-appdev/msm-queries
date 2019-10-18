@@ -1,18 +1,16 @@
 # MSM QUERIES
 
-
 ## Objective
 
 In this project, we'll practice using `.where` and other ActiveRecord query methods. (It would be good to have [the ActiveRecord Chapter](https://chapters.firstdraft.com/chapters/770#where) open in a tab for easy reference.) We're going to practice in the context of our familiar movie-related domain — Directors, Movies, Characters, and Actors. If you still have the printed-out paper tables from Day 1, it's very helpful to have it out to look at.
 
-## 1. Setup
+## Setup
 
- 1. Run `bin/setup` in the terminal window.
+ 1. Open a `rails console` from the command prompt. If it doesn't launch successfully, then you may need to `bin/setup` and wait for it to complete.
  
+## Important notes about rails console 
 
- ## Important notes about rails console 
-
-  1. Sometimes when the output of a Ruby expression is very long, `rails console` is going to paginate it for you. You will have a `:` prompt when this is true, and you can hit <kbd>return</kbd> to scroll through line by line, or <kbd>space</kbd> to scroll through page by page.
+ 1. Sometimes when the output of a Ruby expression is very long, `rails console` is going to paginate it for you. You will have a `:` prompt when this is true, and you can hit <kbd>return</kbd> to scroll through line by line, or <kbd>space</kbd> to scroll through page by page.
 
     When you reach the end of the output, you'll see `(END)`.
 
@@ -20,9 +18,9 @@ In this project, we'll practice using `.where` and other ActiveRecord query meth
 
  2. If you are in `rails console` and then make a change to a model (for example, you define a new method or fix a syntax error), then, annoyingly, **you have to `exit` and then start a new `rails console`** to pick up the new logic. Or, you can use the `reload!` method.
 
- ## 2. Exploring the tables
+## 2. Exploring the tables
 
- Open a Terminal tab, launch a `rails console` session, and then try the following:
+Open a Terminal tab, launch a `rails console` session, and then try the following:
 
 ```ruby
 Director.count
@@ -39,11 +37,12 @@ You'll see that I have already created these 4 tables; they exist, but right now
     [2] pry(main)> Character
     => Character(id: integer, movie_id: integer, actor_id: integer, name: string, created_at: datetime, updated_at: datetime)
     ```
+
  - Looking at the comments at the top of the model file, e.g. `app/models/movie.rb`. (These comments are auto-generated and kept up to date by the excellent [annotate gem](https://github.com/ctran/annotate_models).)
 
- ## 3. CRUD some records Manually
+## 3. CRUD some records Manually
 
- You can enter some rows into tables using the [ActiveRecord methods that you learned](https://chapters.firstdraft.com/chapters/770):
+You can enter some rows into tables using the [ActiveRecord methods that you learned](https://chapters.firstdraft.com/chapters/770):
 
 ```ruby
 d = Director.new
@@ -111,9 +110,9 @@ In what year was the movie `"The Dark Knight"` released?
  - How many films in our table were directed by Francis Ford Coppola?
  - How many films did Morgan Freeman appear in?
 
- ## 6. Your Tasks
+## 6. Your Tasks
 
- Define the following methods. When you think you've got them working, you can run `rails grade` at a command prompt to check your work.
+Define the following methods. When you think you've got them working, you can run `rails grade` at a command prompt to check your work.
 
 ### Class methods to define
 
@@ -130,6 +129,7 @@ The following are [class-level methods](https://chapters.firstdraft.com/chapters
     ```
 
     And then try calling that method in `rails console` with `Director.youngest` (don't forget to `reload!`). Once you've established that you've defined the method correctly, work on enhancing the method to return what we're actually looking for. _Work in small steps._
+
  - `Director.eldest` should return the eldest director on the list. Watch out for `nil` values in the `dob` column — `nil` is considered to be "less than" anything else, when ordered.
 
     You can [use `.not` to filter out](https://chapters.firstdraft.com/chapters/770#wherenotthis) those rows first.
@@ -141,7 +141,7 @@ The following are [class-level methods](https://chapters.firstdraft.com/chapters
 
 The following are [instance-level methods](https://chapters.firstdraft.com/chapters/769#defining-instance-methods) to define.
 
- - Given any director, let's call it `d`, `d.filmography` should return the rows in the movies table that belong to the director.
+ - You should define an instance method called `filmography` such that any director, let's imagine it was in a variable called `d`, could use `d.filmography` and return the rows in the movies table that belong to it.
 
     Remember, our models are accessible from anywhere in the Rails application — `lib/tasks`, `rails console`, and _even from within other models_. So, we can reference `Movie` from inside `Director`:
 
@@ -152,12 +152,12 @@ The following are [instance-level methods](https://chapters.firstdraft.com/chapt
       end
     end
     ```
- - Given any movie, let's call it `m`,
+ - Imagine there's an arbitrary movie in a variable `m`. Define instance methods such that:
     - `m.director` should return the **row** in the directors table whose ID matches the movie's `director_id`. Note that the method shouldn't just return the _name_ of the director; we want the whole row, so that we can use the other details if we want them (like date of birth or bio).
     - `m.characters` should return a collection of the characters that were in the movie.
- - Given any actor, let's call it `a`, `a.characters` should return a collection of the characters that were played by the actor.
+ - Imagine there's an arbitrary actor in a variable `a`. `a.characters` should return a collection of the characters that were played by the actor.
 
 ### Stretch goals
 
- - Given any movie, let's call it `m`, `m.cast` should return a collection of `Actor`s (_not_ `Character`s) that appeared in that movie. Hint: [`.pluck`](https://chapters.firstdraft.com/chapters/770#pluck).
- - Given any actor, let's call it `a`, `a.filmography` should return a collection of `Movie`s that the actor appeared in.
+ - Imagine there's an arbitrary movie in a variable `m`. `m.cast` should return a collection of `Actor`s (_not_ `Character`s) that appeared in that movie. Hint: [`.pluck`](https://chapters.firstdraft.com/chapters/770#pluck).
+ - Imagine there's an arbitrary actor in a variable `a`. `a.filmography` should return a collection of `Movie`s that the actor appeared in.

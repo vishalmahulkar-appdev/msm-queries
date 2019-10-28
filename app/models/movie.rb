@@ -25,4 +25,12 @@ class Movie < ApplicationRecord
     def Movie.long
         return Movie.where("duration >= ?",180)
     end
+
+    def director
+        return Director.where( {:id => self.director_id})
+    end
+
+    def characters
+        return Character.where( {:movie_id => self.id} )
+    end
 end

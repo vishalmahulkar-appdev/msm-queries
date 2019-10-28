@@ -19,4 +19,8 @@ class Director < ApplicationRecord
     def Director.eldest
         return Director.order({:dob => :asc}).where.not({:dob => nil}).first
     end
+
+    def filmography
+        return Movie.where({ :director_id => self.id })
+    end
 end

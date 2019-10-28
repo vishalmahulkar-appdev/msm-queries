@@ -12,4 +12,11 @@
 #
 
 class Director < ApplicationRecord
+    def Director.youngest
+        return Director.order({:dob => :asc}).last
+    end
+
+    def Director.eldest
+        return Director.order({:dob => :asc}).where.not({:dob => nil}).first
+    end
 end

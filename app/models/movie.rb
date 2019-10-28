@@ -14,5 +14,15 @@
 #
 
 class Movie < ApplicationRecord
+    def Movie.last_decade
+        return Movie.where("year >= ?",2008)
+    end
 
+    def Movie.short
+        return Movie.where("duration <= ?",90)
+    end
+
+    def Movie.long
+        return Movie.where("duration >= ?",180)
+    end
 end

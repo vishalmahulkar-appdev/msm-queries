@@ -27,10 +27,15 @@ class Movie < ApplicationRecord
     end
 
     def director
-        return Director.where( {:id => self.director_id})
+        return Director.where( {:id => self.director_id}).last
     end
 
     def characters
         return Character.where( {:movie_id => self.id} )
+    end
+
+    def cast
+        c_ids = Character.where( {:movie_id => self.id} ).pluck(:actor_id)
+        return Actor.where( {:id => m_ids} )
     end
 end

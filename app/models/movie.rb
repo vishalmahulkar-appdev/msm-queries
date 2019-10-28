@@ -36,6 +36,6 @@ class Movie < ApplicationRecord
 
     def cast
         c_ids = Character.where( {:movie_id => self.id} ).pluck(:actor_id)
-        return Actor.where( {:id => m_ids} )
+        return Actor.where( {:id => c_ids} )
     end
 end
